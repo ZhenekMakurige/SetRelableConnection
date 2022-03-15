@@ -14,33 +14,42 @@ public class Entrance {
         }
         return i;
     }
-    public int[] SetRelablesString(int numbrsOfNode) throws Exception, IOException {
+    public int[] SetRelablesString(int numbrsOfNode) {
         int[] arr = new int[numbrsOfNode];
         int[] voidArr = new int[0];
 
         System.out.println("Enter the string value between 0 to 1, means relables of nodes (lengths = " + numbrsOfNode + "): ");
         Scanner scanr = new Scanner(System.in);
 
+        int num = 0;
         int tmpVar = 0;
-        try {
-            while (scanr.hasNextInt()){
-                int val = scanr.nextInt();
-                if (val < 0 || val > 1){
-                    //System.out.println("wrong number, try again...");
-                    arr = Arrays.copyOf(voidArr, 0);
-                }
-                arr[tmpVar] = val;
-                tmpVar++;
-            }
+        if (scanr.hasNextLine()){
 
+            String StrIn = scanr.nextLine();
+            char[] charArrIn = StrIn.toCharArray();
+
+            for (int i = 0; i < charArrIn.length; i++){
+                try {
+                    num = Character.getNumericValue(charArrIn[i]);
+                    if (num < 0 || num > 1){
+                        System.out.println("wrong number , try again...");
+                        return voidArr;
+                    }else {
+                        arr[tmpVar] = num;
+                        tmpVar++;
+                    }
+                }
+                catch (NumberFormatException e){
+                    System.out.println("Atention! enter the number format against.");
+                    return voidArr;
+                }
+            }
         }
-        /*catch(IOException e){
-            System.out.println(e.getMessage());
+
+        if (tmpVar < numbrsOfNode){
+            System.out.println("Number can't be empty. Try again...");
             return voidArr;
-        }*/
-        /*catch (){
-            throw new Exception("Number can not be empty. Try again...");
-        }*/
+        }
         return arr;
      }
 }

@@ -22,7 +22,6 @@ public class Node {
 
     public static ArrayList GetChildNodes(Node node, Node arrNodes[], int numbersOfNodes) {
         ArrayList<Node> childNodes = new ArrayList<>();
-        //node = (Node) node;
         int ParentNumNode = node.GetNumNode();
         Node chldNode;
         int valIteratorTo;
@@ -34,9 +33,7 @@ public class Node {
         }
         for (int i = ParentNumNode; i < valIteratorTo; i++) {
             chldNode = (Node) arrNodes[i];
-            //if (chldNode.relable == 1) {
-                childNodes.add(chldNode);
-            //}
+            childNodes.add(chldNode);
         }
         return childNodes;
     }

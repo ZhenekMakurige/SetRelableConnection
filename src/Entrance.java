@@ -47,7 +47,7 @@ public class Entrance {
         }
 
         if (tmpVar < numbrsOfNode){
-            System.out.println("Number can't be empty. Try again...");
+            System.out.println("Number can't be empty. Try again....");
             return voidArr;
         }
         return arr;
